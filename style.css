@@ -19,7 +19,8 @@ body, html {
     justify-content: center;
     align-items: center;
     background: forestgreen;
-    position: relative;  /* Ensures absolute positioning works inside the banner */
+    position: relative;
+    flex-direction: column; /* Make sure elements are stacked vertically */
 }
 
 .banner .wrapper {
@@ -32,13 +33,20 @@ body, html {
 
 .banner .wrapper img {
     border-radius: 25px;
+    max-width: 100%;  /* Ensure the image is responsive */
+    height: auto;
 }
-.banner .wrapper h1{
+
+.banner .wrapper h1 {
     color: #fff;
+    font-size: 36px;
+    text-align: center;
 }
+
 .banner .buttons {
-    display: flex;            /* Align buttons horizontally */
-    gap: 1rem;                /* Add space between buttons */
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
 }
 
 .banner .buttons button {
@@ -49,5 +57,130 @@ body, html {
     color: #fff;
     font-size: 35px;
     border-radius: 25px;
-   
+    transition: background-color 0.3s ease;
+}
+
+.banner .buttons button:hover {
+    background-color: #8b1626;
+}
+
+/* Modal Style */
+.modal {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);  /* Semi-transparent black background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    max-width: 500px;
+}
+
+#crying-image {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+#crying-image img {
+    width: 100%;
+    animation: cryingAnimation 1s ease-in-out infinite;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #f44336; /* Red for emotional emphasis */
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #720b23;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #8b1626;
+}
+
+/* Crying Animation */
+@keyframes cryingAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Responsive styles for screens smaller than 600px */
+@media (max-width: 600px) {
+    .banner {
+        height: 100vh;  /* Keep the height at 100vh */
+        padding: 20px;
+        justify-content: flex-start; /* Align elements to the top */
+    }
+
+    .banner .wrapper h1 {
+        font-size: 28px;
+    }
+
+    .banner .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner .buttons button {
+        font-size: 24px;
+        padding: 12px 40px;
+    }
+
+    .modal-content {
+        width: 80%;  /* Make the modal content take up more width */
+        padding: 15px;
+    }
+
+    #crying-image {
+        width: 60px;  /* Reduce the crying image size */
+    }
+
+    .modal-content h2 {
+        font-size: 20px;
+    }
+
+    .modal-content p {
+        font-size: 16px;
+    }
+
+    .modal-content button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
 }
